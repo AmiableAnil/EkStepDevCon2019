@@ -1,0 +1,46 @@
+<ion-content class="container" style="background-color:#08a5fb" padding>
+    <form [formGroup]="guestRegistrationForm" class="form">
+        <div text-center class="image-section">
+            <ion-icon name="happy" [color]="'light'" style="zoom:4.0;"></ion-icon>
+        </div>
+        <div class="text-section">
+            <h1 text-center margin-bottom style="font-size:25px; color:yellow">
+                <b>Welcome to Devcon !!!</b></h1>
+            <h3 text-center style="color:#ffffff; margin-top:-19px; margin-bottom:20px;">
+                Please enter your details to get started</h3>
+        </div>
+        <!-- <div text-center class="camera-icon" (click)="takePicture()" *ngIf="lastImage === null">
+            <ion-icon name="camera"></ion-icon>
+        </div>
+        <div text-center class="camera-icon" *ngIf="lastImage !== null">
+            <img src="{{lastImage}}" (click)="takePicture(true)" style="width: 50px;height: 50px;border-radius: 50%;">
+        </div> -->
+        <ion-item class="custom-input" no-lines style="margin-bottom:4vh">
+            <ion-input type="text" class="placeholder-text" formControlName="visitCode" placeholder="Visitor Code"></ion-input>
+        </ion-item>
+        <ion-item class="custom-input" no-lines style="margin-bottom:4vh">
+            <ion-input type="text" class="placeholder-text" formControlName="name" placeholder="User Name"></ion-input>
+        </ion-item>
+        <ion-item no-lines class="custom-select">
+            <ion-label style="color:#ffffff">Organization</ion-label>
+            <ion-select multiple="false" text-capitalize formControlName="org">
+                <ion-option *ngFor="let org of orgList" value="{{org}}">{{org}}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col text-center>
+                    <button ion-button full color="light" margin-top style="border-radius: 4px;" [disabled]="!guestRegistrationForm.valid"
+                        (click)="register()">Submit
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>
+
+<!-- <ion-footer>
+    <button ion-button block [disabled]="!guestRegistrationForm.valid" (click)="register()">Register
+    </button>
+</ion-footer> -->

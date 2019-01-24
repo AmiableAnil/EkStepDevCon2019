@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 // import { StallQRScanPage } from '../stall-qr-scan/stall-qr-scan.component';
 import {StallSelectionPage} from '../stall-selection/stall-selection';
+import { RegistrationOfflinePage } from '../registration-offline/registration-offline';
 
 @IonicPage()
 @Component({
@@ -22,6 +23,11 @@ export class ProfilePage {
 
     navigateToStallSelectionPage() {
         this.navCtrl.push(StallSelectionPage, {});
+        this.viewCtrl.dismiss();
+    }
+
+    navigateToRegisterOfflinePage() {
+        this.navCtrl.push(RegistrationOfflinePage, {});
         this.viewCtrl.dismiss();
     }
 }
