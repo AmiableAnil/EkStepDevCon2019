@@ -12,35 +12,41 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-card *ngFor="let idea of ideasResponse?.Stall.ideas" style="color: white; background: -webkit-linear-gradient(left, rgba(72,158,234,1) 5%, rgba(72,158,234,1) 18%, rgba(72,158,234,1) 20%, rgba(31,127,229,1) 92%, rgba(31,127,229,1) 93%);">
-    <ion-card-header class="card-header">
-      <h1>
-        {{idea?.name}}
-      </h1>
-    </ion-card-header>
+    <ng-container *ngFor="let idea of ideasResponse?.Stall.ideas">
+        <ion-card *ngIf="idea.code !== 'IDE00'"
+                  style="color: white; background: -webkit-linear-gradient(left, rgba(72,158,234,1) 5%, rgba(72,158,234,1) 18%, rgba(72,158,234,1) 20%, rgba(31,127,229,1) 92%, rgba(31,127,229,1) 93%);">
+            <ion-card-header class="card-header">
+                <h1>
+                    {{idea?.name}}
+                </h1>
+            </ion-card-header>
 
-    <div class="p-16"><b>Description:</b>
-      <p style="color: white">
-        {{idea?.description}}
-    </div>
+            <div class="p-16"><b>Description:</b>
+                <p style="color: white">
+                    {{idea?.description}}
+            </div>
 
-    <div class="p-16"><b>Advanced:</b>
-      <p style="color: white">parents and students</p>
-    </div>
+            <div class="p-16"><b>Advanced:</b>
+                <p style="color: white">parents and students</p>
+            </div>
 
-    <div style="margin-top: -8px; padding: 16px"><b>Rate Us:</b></div>
-    <ion-row no-padding>
-      <ion-col style="margin-top: -35px; margin-left: 5px">
-        <rating [readOnly]="true" max="5" [ngModel]="getRating(idea)" (click)="onClickToAddFeedback(idea)"
-                emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
-        </rating>
-      </ion-col>
-      <ion-col end>
-        <button ion-button style="background-color:yellow; color: black; margin-top: -25px; border-radius: 5px; width: 72px; height: 32px;"
-                [disabled]="isIdeaBought(idea.code) || !getAvailableCoins()" (click)="onBuyIdea(idea)" float-end medium>
-          {{isIdeaBought(idea.code) ? 'BOUGHT' : 'BUY'}}
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+            <div style="margin-top: -8px; padding: 16px"><b>Rate Us:</b></div>
+            <ion-row no-padding>
+                <ion-col style="margin-top: -35px; margin-left: 5px">
+                    <rating [readOnly]="true" max="5" [ngModel]="getRating(idea)" (click)="onClickToAddFeedback(idea)"
+                            emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+                            nullable="false">
+                    </rating>
+                </ion-col>
+                <ion-col end>
+                    <button ion-button
+                            style="background-color:yellow; color: black; margin-top: -25px; border-radius: 5px; width: 72px; height: 32px;"
+                            [disabled]="isIdeaBought(idea.code) || !getAvailableCoins()" (click)="onBuyIdea(idea)"
+                            float-end medium>
+                        {{isIdeaBought(idea.code) ? 'BOUGHT' : 'BUY'}}
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </ng-container>
 </ion-content>
