@@ -30,8 +30,10 @@ export class TelemetryServiceImpl implements TelemetryService {
                         edata: request.edata,
                         dimensions: {
                             ...request.dimensions,
-                            visitorId: await this.appPreferences.fetch(PreferenceKey.USER_CODE),
-                            visitorName: await this.appPreferences.fetch(PreferenceKey.USER_NAME)
+                            visitorId: request.dimensions.visitorId,
+                            visitorName: request.dimensions.visitorName,
+                            stallId: request.dimensions.stallId,
+                            stallName: request.dimensions.stallName
                         }
                     } as Telemetry
                 ]

@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {App, IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StallService} from '../../services/stall/stall-service';
 import {StallQRScanPage} from '../stall-qr-scan/stall-qr-scan.component';
@@ -27,6 +27,7 @@ export class StallSelectionPage {
     private selectedIdea?: Idea;
 
     constructor(
+        public app: App,
         public navCtrl: NavController,
         public navParams: NavParams,
         private fb: FormBuilder, @Inject('STALL_SERVICE') private stallService: StallService,
@@ -59,7 +60,10 @@ export class StallSelectionPage {
     }
 
     onSubmit() {
-        this.navCtrl.push(StallQRScanPage, {});
+        this.navCtrl.push(StallQRScanPage, {
+            selectedStall: this.selectedStall,
+            selectedIdea: this.selectedIdea
+        });
         this.viewCtrl.dismiss();
     }
 

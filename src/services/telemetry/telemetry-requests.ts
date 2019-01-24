@@ -8,6 +8,10 @@ export interface RegisterTelemetry {
 
 export interface AttendanceTelemetry {
     dimensions: {
+        visitorId: string;
+        visitorName: string;
+        ideaId: string;
+        ideaName: string;
         stallId: string;
         stallName: string;
     };
