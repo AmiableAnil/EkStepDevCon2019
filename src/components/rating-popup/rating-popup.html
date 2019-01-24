@@ -1,22 +1,16 @@
-<ion-content [formGroup]="feedbackForm">
+<ion-content [formGroup]="feedbackForm" (submit)="onSubmit()">
   <ion-grid padding>
     <ion-row>
       <ion-col col-10>
-        <div>
-          <p class="title heading1">smaple text to be added</p>
-          <p class="text-gray-color">sample text to be added</p>
-        </div>
+          <rating readOnly="false" max="5" [formControlName]="'rating'" emptyStarIconName="star-outline"
+                  halfStarIconName="star-half" starIconName="star" nullable="false">
+          </rating>
       </ion-col>
       <ion-col col-2>
         <div style="margin-top:5px" (click)="onCancelClick()">
           <img style="margin-top: 2vh" src="assets/imgs/ic_action_close.png" class="tool-icon" float-end />
         </div>
       </ion-col>
-    </ion-row>
-    <ion-row class="display-inline">
-      <rating readOnly="false" max="5" [formControlName]="'rating'" emptyStarIconName="star-outline"
-              halfStarIconName="star-half" starIconName="star" nullable="false">
-      </rating>
     </ion-row>
     <ion-row>
       <ion-input placeholder="feedback" [formControlName]="'comment'"></ion-input>

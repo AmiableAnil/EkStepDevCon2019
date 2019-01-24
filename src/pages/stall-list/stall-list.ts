@@ -33,6 +33,10 @@ export class StallListPage {
         private loadingCtrl: LoadingController) {
     }
 
+    ionViewWillEnter() {
+        this.fetchBoughtIdeas();
+    }
+
     ionViewDidLoad() {
         this.fetchStalls().then(() => {
             this.onStallSelect(this.stalls[0]);
@@ -121,8 +125,10 @@ export class StallListPage {
 
     public getRating(idea: Idea) {
         const key = `${this.currentStall.code}-${idea.code}`;
+        console.log(key);
 
         if (this.boughtIdeas[key]) {
+            console.log(this.boughtIdeas[key]);
             return this.boughtIdeas[key].rating;
         } else {
             return 0;
